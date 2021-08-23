@@ -45,8 +45,6 @@ def main():
 
   print "Running training in the {} setting".format(mode)
 
-  
-
   if mode in ['TRAIN-ALL']:
     q_train = numpy.load(os.path.join(data_dir, 'train-all.questions.npy'))
     a_train = numpy.load(os.path.join(data_dir, 'train-all.answers.npy'))
