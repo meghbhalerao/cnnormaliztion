@@ -43,7 +43,6 @@ class MiniBatchIteratorConstantBatchSize(object):
     """ Basic mini-batch iterator """
     def __init__(self, rng, datasets, batch_size=100, randomize=False):
         self.rng = rng
-
         self.batch_size = batch_size
         self.n_samples = datasets[0].shape[0]
         padded_datasets = []
@@ -235,9 +234,8 @@ class Trainer(object):
 
   def _batch_score(self, batch_iterator):
     """ returned function that scans the entire set given as input """
-    score_fn = theano.function(inputs=[self.batch_x, self.batch_y],
-                               outputs=self.errors,
-                               givens={x: batch_x, y: batch_y})
+    score_fn = theano.function(inputs=[self.batch_x, self.batch_y], outputs=self.errors, givens={x: batch_x, y: batch_y})
+    
     def foo():
       return [score_fn(batch_x, batch_y) for batch_x, batch_y in batch_iterator]
     return foo

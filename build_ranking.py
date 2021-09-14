@@ -9,32 +9,41 @@ def g_file(infile,save_file,terminology, dev_size=900):
 	qa_set = []
 	index_set = []
 	no_postive=0
+	# CUIs are mapped to the first CUI in the term line.
 	Id_dict = read_term(terminology)
+	# this dataset is the candidate dataset
 	for x, data in enumerate(dataset):
 		if data.strip() == '':
 			continue
 		item_set = data.strip().split('\n')
 		
+		# if contains only 1 candidate then pass, since that is directly taken as the normlization result as mentioned in paper
 		if len(set(item_set)) == 1:
 			continue
+		
 		query = ''
+
 		pos_set, neg_set = [],[]
 		repeat_list = []
 		for y, item in enumerate(item_set):
 			try:
 				#label , query , question, ques_id, query_id =  item.split('\t')
-				q , a, q_id, a_id, sieve, fname, index =  item.split('\t')
+				# q , a, q_id, a_id, sieve, fname, index =  item.split('\t')
+				q , a, q_id, a_id = item.split('\t')
+				
 				if a in repeat_list:
 					continue
 				else:
 					repeat_list.append(a)
-				q_id = normId( q_id, Id_dict)
-				a_id  = normId( a_id  , Id_dict)
+					
+				q_id = normId(q_id, Id_dict)
+				a_id  = normId(a_id, Id_dict)
 				if a_id in q_id:
 					label = 1
 				else:
 					label = 0 
 			except:
+				# if candidate is not in standard form then error is thrown and loop continues
 				print "Error parser:" + item
 				continue
 			qt = tokeniztion(q)  #"\t".join(word_tokenize(query))
@@ -50,6 +59,7 @@ def g_file(infile,save_file,terminology, dev_size=900):
 		index_line = generate_index(uid=str(x), q=qt, pos_set=pos_set, neg_set=neg_set)
 		qa_set.append(line)
 		index_set.append(index_line)
+		
 	print len(qa_set),len(index_set)
 	open(save_file,'w').write('\n'.join(qa_set[dev_size:]))
 	open(save_file.replace(".xml",".xml.index"),'w').write("\n".join(index_set[dev_size:]))
@@ -95,8 +105,8 @@ def g_file_svm(infile,save_file, terminology, dev_size=900):
 					continue
 				else:
 					repeat_list.append(a)
-				q_id = normId( q_id, Id_dict)
-				a_id  = normId( a_id  , Id_dict)
+				q_id = normId(q_id, Id_dict)
+				a_id  = normId(a_id, Id_dict)
 				if a_id in q_id:
 					label = 1
 				else:

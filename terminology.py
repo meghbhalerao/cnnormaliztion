@@ -18,7 +18,6 @@ def read_term(infile):
 def normId(Id,Id_dict):
 	return Id_dict[Id] if Id in Id_dict else Id
 	
-	
 def read_id2term(infile):
 	'''
 	terminology format (line): ID<1>|ID<2>|...||term<1>|term<2>|...|term<n>

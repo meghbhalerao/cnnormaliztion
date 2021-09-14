@@ -24,7 +24,7 @@ def g_file(infile,save_file,terminology, dev_size=900):
 		if data.strip() == '':
 			continue
 		item_set = data.strip().split('\n')
-		
+		print(len(item_set))
 		if len(set(item_set)) == 1:
 			continue
 		query = ''
@@ -39,7 +39,11 @@ def g_file(infile,save_file,terminology, dev_size=900):
 		for y, item in enumerate(item_set):
 			try:
 				#label , query , question, ques_id, query_id =  item.split('\t')
-				q , a, q_id, a_id, sieve, fname, index =  item.split('\t')
+				# changed-here
+				#q , a, q_id, a_id, sieve, fname, index =  item.split('\t')
+
+				q , a, q_id, a_id =  item.split('\t')
+				print(q , a, q_id, a_id)
 				if a in repeat_list:
 					continue
 				else:
@@ -61,6 +65,7 @@ def g_file(infile,save_file,terminology, dev_size=900):
 			except:
 				print "Error parser:" + item
 				continue
+			
 			qt = tokeniztion(q)  #"\t".join(word_tokenize(query))
 			a = tokeniztion(a)
 			if int(label) == 1:

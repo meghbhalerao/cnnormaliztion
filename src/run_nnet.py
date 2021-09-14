@@ -1,5 +1,5 @@
 from datetime import datetime
-from sklearn import metrics
+#from sklearn import metrics
 from theano import tensor as T
 import cPickle
 import numpy
@@ -269,7 +269,7 @@ def main():
   pairwise_layer = nn_layers.PairwiseNoFeatsLayer(q_in=q_logistic_n_in,
   # pairwise_layer = nn_layers.PairwiseWithFeatsLayer(q_in=q_logistic_n_in,
   # pairwise_layer = nn_layers.PairwiseOnlySimWithFeatsLayer(q_in=q_logistic_n_in,
-                                                a_in=a_logistic_n_in)
+  a_in=a_logistic_n_in)
   pairwise_layer.set_input((nnet_q.output, nnet_a.output))
 
   # n_in = q_logistic_n_in + a_logistic_n_in + feats_ndim + a_logistic_n_in

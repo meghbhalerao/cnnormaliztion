@@ -50,7 +50,10 @@ def benchmark(infile, terminology):
 			no_postive += 1
 			summ += 1
 	print summ, right,no_postive
-	print float(right)/summ
+	try:
+		print float(right)/summ
+	except:
+		print 0
 
 if __name__ == '__main__':
 	benchmark(sys.argv[1], sys.argv[2])

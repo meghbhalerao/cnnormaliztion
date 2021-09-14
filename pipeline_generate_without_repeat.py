@@ -8,6 +8,7 @@ def sys_run(command):
 def recompline():
 	sys_run("javac ./tool/sieves/*.java")
 	sys_run("javac ./tool/util/*.java")
+	sys_run("javac ./tool/*.java")
 	sys_run("javac ./tool/Main.java")
 	#sys_run("javac ./tool/MainTraining.java")
 
@@ -25,11 +26,12 @@ def run_rulebase(dataset,mode = 'test'):
 		sieve_Level = "-1"
 	else:
 		print "only accepted train or test."
+
 	terminology = dataset + "/TERMINOLOGY.txt"
 	
 	#data_label = dataset.split('/')[-1] if dataset.split('/')[-1] !=0 else dataset.split('/')[-2] 
 	print "java " + " ".join(["tool.Main", training_set,test_set,terminology,sieve_Level])
-	sys_run("java " + " ".join(["tool.Main", training_set,test_set,terminology,sieve_Level]) )
+	sys_run("java " + " ".join(["tool.Main", training_set,test_set,terminology, sieve_Level]) )
 	sys_run("cp candidate.txt " + dataset + "/" + mode + "_candidate.txt" )
 
 def generate_candidate_xml(dataset, mode='test'):
@@ -46,6 +48,7 @@ def generate_candidate_xml(dataset, mode='test'):
 def generate_candidate_svm(dataset, mode='test'):
 
 	print "warning... please train before test when you tried to generate svm format"
+
 	infile = dataset + "/" + mode + "_candidate.txt"
 	save_file = dataset + "/" + mode + "_candidate.svm"
 	terminology = dataset + "/TERMINOLOGY.txt"

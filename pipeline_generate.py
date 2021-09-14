@@ -8,6 +8,7 @@ def sys_run(command):
 def recompline():
 	sys_run("javac ./tool/sieves/*.java")
 	sys_run("javac ./tool/util/*.java")
+	sys_run("javac ./tool/*.java")
 	sys_run("javac ./tool/Main.java")
 	#sys_run("javac ./tool/MainTraining.java")
 

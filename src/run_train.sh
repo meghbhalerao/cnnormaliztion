@@ -1,1 +1,1 @@
-python run_nnet.py TRAIN ./data/dataset/cl.obo
+python run_nnet.py TRAIN ./data/cl_data/
