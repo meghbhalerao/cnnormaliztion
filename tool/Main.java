@@ -110,7 +110,7 @@ public class Main {
     public void runMultiPassSieve() throws IOException {
         Sieve.setStandardTerminology();
         Sieve.setTrainingDataTerminology();
-        File f = new File("/Users/megh/work/cnnormaliztion/candidate.txt");
+        File f = new File("/home/megh/projects/entity-norm/cnnormaliztion/candidate.txt");
         f.createNewFile();
 
         System.out.println(Sieve.getStandardTerminology());

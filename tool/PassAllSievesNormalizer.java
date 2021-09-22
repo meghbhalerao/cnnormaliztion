@@ -57,7 +57,8 @@ public class PassAllSievesNormalizer {
         concept.setCui(Sieve.exactMatchSieve(concept.getName())); 
         if (!pass(concept, ++currentSieveLevel))
             return;
-        System.out.println(concept.getNamesKnowledgeBase());
+        
+        
 
         // This is the beginning of the second type of rules 
 
@@ -100,6 +101,7 @@ public class PassAllSievesNormalizer {
         
         //Sieve 9
         concept.setCui(Main.test_data_dir.toString().contains("ncbi") ? CompoundPhraseSieve.applyNCBI(concept.getName()) : CompoundPhraseSieve.apply(concept.getName()));
+        System.out.println(concept.getNamesKnowledgeBase());
         if (!pass(concept, ++currentSieveLevel)) {            
             return;         
         }

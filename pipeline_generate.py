@@ -6,10 +6,16 @@ def sys_run(command):
 	os.system(command)
 
 def recompline():
+	"""
 	sys_run("javac ./tool/sieves/*.java")
 	sys_run("javac ./tool/util/*.java")
 	sys_run("javac ./tool/*.java")
 	sys_run("javac ./tool/Main.java")
+	"""
+	sys_run("/home/megh/jre1.8.0_301/bin/java ./tool/sieves/*.java")
+	sys_run("/home/megh/jre1.8.0_301/bin/java ./tool/util/*.java")
+	sys_run("/home/megh/jre1.8.0_301/bin/java ./tool/*.java")
+	sys_run("/home/megh/jre1.8.0_301/bin/java ./tool/Main.java")
 	#sys_run("javac ./tool/MainTraining.java")
 
 def run_rulebase(dataset,mode = 'test'):

@@ -1,10 +1,9 @@
 import numpy as np
 import cPickle
 import os,sys
-
+import pickle
 from alphabet import Alphabet
 from utils import load_bin_vec
-
 
 def load_senna_vec():
   # word2vec = {}
@@ -13,10 +12,21 @@ def load_senna_vec():
   word2vec = dict(zip(words, vecs))
   return word2vec
 
+def make_vocab(dataset_name = 'cl'):
+  data_base_path  = os.path.join("../data/data_%s"%(str(dataset_name)))
+  _, _, mention2id, _ = load_data(filename=os.path.join("../data/obo-data/%s.obo"%(dataset_name)))
+  vocab_dict  = {}
+  for item in mention2id.keys():
+    words_item  = item.split()
+    for word_ in words_item:
+      vocab_dict[str(word_)] = 1
+  
+  pickle.dump(vocab_dict,open(os.path.join(data_base_path),'w'))
+
 
 def main():
   np.random.seed(123)
-
+  ## make_vocab()
   data_dirs = sys.argv[1:]
 
   '''data_dirs = [

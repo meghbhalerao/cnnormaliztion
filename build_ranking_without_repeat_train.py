@@ -36,14 +36,17 @@ def g_file(infile,save_file,terminology, dev_size=900):
 			'''
 		#print a, len(item_set)
 		#print len(item_set)
+		
+		print item_set
+
 		for y, item in enumerate(item_set):
 			try:
 				#label , query , question, ques_id, query_id =  item.split('\t')
 				# changed-here
 				#q , a, q_id, a_id, sieve, fname, index =  item.split('\t')
 
-				q , a, q_id, a_id =  item.split('\t')
-				print(q , a, q_id, a_id)
+				q, q_id, a, a_id =  item.split('\t')
+				print item
 				if a in repeat_list:
 					continue
 				else:

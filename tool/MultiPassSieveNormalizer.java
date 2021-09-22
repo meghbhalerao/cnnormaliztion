@@ -17,7 +17,7 @@ import tool.sieves.StemmingSieve;
 import tool.sieves.SymbolReplacementSieve;
 import tool.util.Concept;
 import tool.util.Terminology;
-
+import java.io.*;
 /**
  *
  * @author
@@ -105,7 +105,8 @@ public class MultiPassSieveNormalizer {
         if (!pass(concept, ++currentSieveLevel)) {            
             return;         
         }
-                
+        System.out.println(concept.getNamesKnowledgeBase());
+
         //Sieve 10
         concept.setCui(SimpleNameSieve.apply(concept));
         pass(concept, ++currentSieveLevel);

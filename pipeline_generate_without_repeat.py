@@ -6,10 +6,17 @@ def sys_run(command):
 	os.system(command)
 
 def recompline():
+	"""
 	sys_run("javac ./tool/sieves/*.java")
 	sys_run("javac ./tool/util/*.java")
 	sys_run("javac ./tool/*.java")
 	sys_run("javac ./tool/Main.java")
+	"""
+	sys_run("/home/megh/jdk1.8.0_202/bin/javac  ./tool/sieves/*.java")
+	sys_run("/home/megh/jdk1.8.0_202/bin/javac ./tool/util/*.java")
+	sys_run("/home/megh/jdk1.8.0_202/bin/javac  ./tool/*.java")
+	sys_run("/home/megh/jdk1.8.0_202/bin/javac   ./tool/Main.java")
+
 	#sys_run("javac ./tool/MainTraining.java")
 
 def run_rulebase(dataset,mode = 'test'):
@@ -24,6 +31,7 @@ def run_rulebase(dataset,mode = 'test'):
 		test_set = dataset + "/dev"
 		#exe = "tool.MainTraining"'
 		sieve_Level = "-1"
+		sieve_Level = "10"
 	else:
 		print "only accepted train or test."
 
@@ -31,7 +39,11 @@ def run_rulebase(dataset,mode = 'test'):
 	
 	#data_label = dataset.split('/')[-1] if dataset.split('/')[-1] !=0 else dataset.split('/')[-2] 
 	print "java " + " ".join(["tool.Main", training_set,test_set,terminology,sieve_Level])
-	sys_run("java " + " ".join(["tool.Main", training_set,test_set,terminology, sieve_Level]) )
+
+	#sys_run("/home/megh/jre1.8.0_301/bin/java tool.Main")
+
+	sys_run("/home/megh/jre1.8.0_301/bin/java " + " ".join(["tool.Main", training_set,test_set,terminology, sieve_Level]))
+
 	sys_run("cp candidate.txt " + dataset + "/" + mode + "_candidate.txt" )
 
 def generate_candidate_xml(dataset, mode='test'):

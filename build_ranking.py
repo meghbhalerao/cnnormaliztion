@@ -29,7 +29,7 @@ def g_file(infile,save_file,terminology, dev_size=900):
 			try:
 				#label , query , question, ques_id, query_id =  item.split('\t')
 				# q , a, q_id, a_id, sieve, fname, index =  item.split('\t')
-				q , a, q_id, a_id = item.split('\t')
+				q , q_id, a, a_id = item.split('\t')
 				
 				if a in repeat_list:
 					continue

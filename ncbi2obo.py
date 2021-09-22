@@ -3,10 +3,10 @@ import os
 sys.path.insert(0, "/Users/megh/work/cnnormaliztion")
 from code.dataset import *
 
-dataset_name  = 'fbbt'
+dataset_name  = 'mp'
 name_array, query_id_array, mention2id, _ = load_data(filename=os.path.join("./data/obo-data/%s.obo"%(dataset_name)))
 
-queries_train, queries_test, queries_valid = data_split(query_id_array,is_unseen=True,test_size = 0.33)
+queries_train, queries_test, queries_valid = data_split(query_id_array,is_unseen=False,test_size = 0.33)
 
 name2id, query2id = process_data_dict(name_array, query_id_array, mention2id)
 

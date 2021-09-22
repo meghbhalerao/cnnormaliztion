@@ -25,7 +25,10 @@ def benchmark(infile, terminology):
 			else:
 				repeat_list.append(item)
 			try:
-				query , question, query_id, ques_id, sieve, fname, index =  item.split('\t')
+				#query , query_id, question, ques_id, sieve, fname, index =  item.split('\t')
+
+				query , query_id, question, ques_id =  item.split('\t')
+
 				query_id = normId( query_id, Id_dict)
 				ques_id  = normId( ques_id  , Id_dict)
 				if query_id == ques_id:
